@@ -1,0 +1,19 @@
+.navigation ul li {
+    display: inline;
+    list-style: none;
+    padding: .05em;
+    background-color: #777;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navigation a {
+    background-color: #777;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    background-color:#fff;
+    color: #777;
+}
