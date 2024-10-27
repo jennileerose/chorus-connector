@@ -1,3 +1,20 @@
-.results {
-    display: none;
+label {
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+#search-button {
+    padding: 0.25em;
+    margin: 0.5em;
+}
+
+th {
+    border: 1px solid #777 !important;
+    font-weight: bold;
+    padding: 0.25em;
+}
+
+td {
+    border: 1px solid #777 !important;
+    padding: 0.25em;
 }
