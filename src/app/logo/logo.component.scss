@@ -1,0 +1,42 @@
+#logo-container {
+    display: inline-flex;
+    margin: auto;
+}
+#images{
+    padding: 0.25em;
+    margin-right: 1em;
+}
+.top-icons {
+    display: inline-flex;
+    flex-direction: row;
+}
+.middle-icons{
+    display: inline-flex;
+    flex-direction: row;
+}
+.bottom-icons {
+    display: inline-flex;
+    flex-direction: row;
+}
+#orange_note {
+    color: #ff8818;
+    font-weight: bold;
+    display: inline;
+}
+#blue_note{
+    color: #0093e5;
+    font-weight: bold;
+}
+#green_note{
+    color: #a6ce39;
+    font-weight: bold;
+}
+#yellow_note{
+    color: #fbcb09;
+    font-weight: bold;
+}
+#words{
+    font-weight: bold;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
