@@ -2,8 +2,14 @@
     <h1>Search for a group</h1>
     <div>
         <p>
-            Search Form will go here
+            <input type="text" placeholder="Search City" [(ngModel)]="inputCity">
+            <button (click)="search()">Search</button>
         </p>
     </div>
+    <div class="results">
+        Results will go here
+    </div>
+    <!-- <div>
+        No Results found
+    </div> -->
 </div>
-<router-outlet />

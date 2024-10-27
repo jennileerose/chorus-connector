@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLinkActive, RouterOutlet, RouterLink } from '@angular/router';
 import { Logo } from './logo/logo.component'
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -11,10 +12,12 @@ import { Logo } from './logo/logo.component'
     RouterLink,
     RouterLinkActive,
     Logo,
+    CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'chorus-connector';
+  isLoggedIn = false
 }
