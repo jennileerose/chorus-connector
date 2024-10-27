@@ -1,25 +1,6 @@
-<main>
-  <div id="container">
-    <div id="logo">
-      <logo />
-    </div>
-    <div class="navigation">
-      <ul>
-          <li>
-              <a href="#" class="first">View All Choirs</a>
-          </li>
-          <li>
-            <a href="#" class="first">Chorus Search</a>
-        </li>
-          <li>
-              <a href="#">Manage Chorus Data</a>
-          </li>
-      </ul>
-    </div>
-    <div id="content">
-      <view-all />
-      <!-- <h1>All Choirs</h1> -->
-      <!-- <p-table
+<div>
+  <h1>All Choirs</h1>
+      <p-table
         [value]="savedData" 
         [rows]="10"
         [paginator]="true"
@@ -42,10 +23,25 @@
                 <td>{{ data.locationState }}</td>
             </tr>
         </ng-template>
-    </p-table> -->
-    </div>
-  </div>
-</main>
-
-
-<router-outlet />
+    </p-table>
+      <!-- <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Contact Email</th>
+            <th>City</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of savedData">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.contactEmail }}</td>
+            <td>{{ item.locationCity }}</td>
+            <td>{{ item.locationState }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+</div>

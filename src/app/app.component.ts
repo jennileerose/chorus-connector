@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-// import { Navgation } from './navgation/navigation.component';
 import { Logo } from './logo/logo.component'
 import * as choirData from '../../data.json';
-import { Chorus } from './types';
+import { ChorusDataForTable } from './types';
+import { ViewAll } from './viewAll/view-all.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Logo],
+  imports: [
+    RouterOutlet,
+    Logo,
+    CommonModule,
+    ViewAll],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'chorus-connector';
   data: any[] = choirData.choruses;
-  savedData: Chorus[] = []
+  @Input() savedData: ChorusDataForTable[] = []
   ngOnInit() {
     this.data.forEach((choir) => {
       this.savedData.push({
@@ -23,12 +29,10 @@ export class AppComponent implements OnInit {
         name: choir.name,
         description: choir.description,
         contactEmail: choir.contactEmail,
-        location: {
-          city: choir.location.city,
-          state: choir.location.state
-        }
+        locationCity: choir.location.city,
+        locationState: choir.location.state
       })
     })
-    console.log(this.savedData)
+    // console.log(this.savedData)
   }
 }

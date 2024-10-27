@@ -3,10 +3,19 @@ export type Location = {
     state: string;
 }
 
-export type Chorus = {
+export type ChorusData = {
     id: string;
     name: string;
     description: string;
     contactEmail: string;
     location: Location;
   };
+
+export type ChorusDataForTable = {
+    id: string;
+    name: string;
+    description: string;
+    contactEmail: string;
+    locationCity: string;
+    locationState: string;
+}
