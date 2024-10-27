@@ -3,49 +3,19 @@
     <div id="logo">
       <logo />
     </div>
-    <div class="navigation">
-      <ul>
-          <li>
-              <a href="#" class="first">View All Choirs</a>
-          </li>
-          <li>
-            <a href="#" class="first">Chorus Search</a>
-        </li>
-          <li>
-              <a href="#">Manage Chorus Data</a>
-          </li>
-      </ul>
-    </div>
+      <nav class="navigation">
+        <ul>
+          <li ><a class="first" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">View All Choirs</a></li>
+          <li><a class="first" routerLink="/search" routerLinkActive="active" ariaCurrentWhenActive="page">Search</a></li>
+          <li><a class="first" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+          <li><a routerLink="/manage-data" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Choir Data</a></li>
+        </ul>
+      </nav>
     <div id="content">
-      <view-all />
-      <!-- <h1>All Choirs</h1> -->
-      <!-- <p-table
-        [value]="savedData" 
-        [rows]="10"
-        [paginator]="true"
-      >
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Contact Email</th>
-                <th>City</th>
-                <th>State</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-data>
-            <tr>
-                <td>{{ data.name }}</td>
-                <td>{{ data.description }}</td>
-                <td>{{ data.contactEmail }}</td>
-                <td>{{ data.locationCity }}</td>
-                <td>{{ data.locationState }}</td>
-            </tr>
-        </ng-template>
-    </p-table> -->
+      <router-outlet />
     </div>
   </div>
 </main>
 
 
-<router-outlet />
+
