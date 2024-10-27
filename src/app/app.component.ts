@@ -22,25 +22,28 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent{
   title = 'chorus-connector';
-  showLogin = false
+  showLogin = false;
+  showError = false;
   // This block is all stuff for logging in
   authorizationData: any = null;
   constructor(public authService: AuthService){}
   inputUsername = '';
   inputPassword = '';
   displayLogin() {
-    this.showLogin = true
+    this.showLogin = true;
   }
   login() {
     this.authorizationData = AuthData.authorizedLogins[0];
     if(this.authorizationData.username === this.inputUsername && this.authorizationData.password === this.inputPassword) {
       this.authService.isAuthenticated = true;
+      this.inputUsername = '';
+      this.inputPassword = '';
+      this.showLogin = false;
+      this.showError = false;
     } else {
       this.authService.isAuthenticated = false;
+      this.showError = true;
     }
-    this.inputUsername = ''
-    this.inputPassword = ''
-    this.showLogin = false;
   }
   logout() {
     if(this.authService.isAuthenticated) {

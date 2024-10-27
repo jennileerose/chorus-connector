@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import * as choirData from '../../../data.json';
 import { TableModule } from 'primeng/table';
+import { DataService } from '../data.service';
 
 @Component({
     selector: 'search',
@@ -12,7 +12,7 @@ import { TableModule } from 'primeng/table';
     styleUrl: './search.component.scss'
   })
   export class SearchGroups implements OnInit {
-    importedData: any[] = choirData.choruses;
+    constructor(public dataService: DataService){}
     @Input() reorganizedData: any[] = [];
     inputCity = '';
     inputState = '';
@@ -21,7 +21,6 @@ import { TableModule } from 'primeng/table';
     noResults = false
     search() {
       this.filteredData = []
-      console.log(this.inputCity, this.inputState)
       this.reorganizedData.forEach((choir) => {
         if(choir.locationCity === this.inputCity && choir.locationState === this.inputState) {
           this.filteredData.push({
@@ -34,7 +33,6 @@ import { TableModule } from 'primeng/table';
           })
         }
       })
-      console.log(this.filteredData)
       if(this.filteredData.length === 0) {
         this.noResults = true
         this.results = false
@@ -44,7 +42,7 @@ import { TableModule } from 'primeng/table';
       }
     }
     ngOnInit() {
-      this.importedData.forEach((choir) => {
+      this.dataService.choirData.forEach((choir) => {
         this.reorganizedData.push({
           id: choir.id,
           name: choir.name,

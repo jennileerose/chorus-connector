@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as choirData from '../../../data.json';
 import { TableModule } from 'primeng/table';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -11,10 +11,10 @@ import { TableModule } from 'primeng/table';
     styleUrl: './view-all.component.scss'
   })
   export class ViewAll implements OnInit {
-    importedData: any[] = choirData.choruses;
+    constructor(public dataService: DataService){}
     @Input() savedData: any[] = []
     ngOnInit() {
-      this.importedData.forEach((choir) => {
+      this.dataService.choirData.forEach((choir) => {
         this.savedData.push({
           id: choir.id,
           name: choir.name,

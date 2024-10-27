@@ -29,7 +29,7 @@
                         <td>{{ data.locationState }}</td>
                         <td>
                             <button (click)="editChoirInformation(data.id)" ><ng-icon name="heroPencilSquareSolid"></ng-icon></button>
-                            <button (click)="deleteChoirInformation(data.id)"><ng-icon name="heroTrashSolid"></ng-icon></button>
+                            <button (click)="deleteChoirInformation(data.id, data.name)"><ng-icon name="heroTrashSolid"></ng-icon></button>
                         </td>
                     </tr>
                 </ng-template>

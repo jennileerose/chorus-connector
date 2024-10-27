@@ -2,10 +2,11 @@ import { Component, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import * as choirData from '../../../data.json';
 import { TableModule } from 'primeng/table';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroPencilSquareSolid, heroTrashSolid } from '@ng-icons/heroicons/solid';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-data',
@@ -16,19 +17,13 @@ import { heroPencilSquareSolid, heroTrashSolid } from '@ng-icons/heroicons/solid
   providers: [provideIcons({ heroPencilSquareSolid, heroTrashSolid })],
 })
 export class ManageDataComponent implements OnInit{
+  // this checks if the user is logged in and pulls in the choir "database"
+  constructor(public authService: AuthService, private router: Router, public dataService: DataService){}
 
-  constructor(public authService: AuthService){}
-
-  // This block pulls in the choir "database"
-  inputName = '';
-  inputDescription = '';
-  inputContactEmail = '';
-  inputLocationCity = '';
-  inputLocationState = '';
-  importedData: any[] = choirData.choruses;
+  newChoirData: any[] = []
   @Input() reorganizedData: any[] = [];
   ngOnInit() {
-    this.importedData.forEach((choir) => {
+    this.dataService.choirData.forEach((choir) => {
       this.reorganizedData.push({
         id: choir.id,
         name: choir.name,
@@ -41,11 +36,36 @@ export class ManageDataComponent implements OnInit{
   }
   editChoirInformation(id: string) {
     console.log(id)
-  }
-  deleteChoirInformation(id: string) {
-    console.log(id)
-  }
-  addNewChoir() {
+    // this.reorganizedData.forEach((choir) => {
 
+    // })
+  }
+  deleteChoirInformation(id: string, name: string) {
+    if(confirm('Are you sure you want to delete ' + name + ' ?')) {
+      console.log(id)
+      this.reorganizedData.forEach((choir) => {
+        if(choir.id !== id) {
+          this.newChoirData.push({
+            id: choir.id,
+            name: choir.name,
+            description: choir.description,
+            contactEmail: choir.contactEmail,
+            location: {
+              city: choir.locationCity,
+              state: choir.locationState
+            }
+          })
+        }
+      })
+      this.dataService.choirData = this.newChoirData
+      const jsonData = JSON.stringify({choruses: this.newChoirData})
+      const blob = new Blob([jsonData], { type: 'application/json' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      a.click();
+      this.router.navigate(['/view-all']);
+    }
   }
 }
