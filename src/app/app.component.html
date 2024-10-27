@@ -5,12 +5,24 @@
     </div>
       <nav class="navigation">
         <ul>
-          <li ><a class="first" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">View All Choirs</a></li>
-          <li><a class="first" routerLink="/search" routerLinkActive="active" ariaCurrentWhenActive="page">Search</a></li>
-          <!-- <li><a class="first" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li> -->
-          <li *ngIf = "isLoggedIn"><a routerLink="/manage-data" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Choir Data</a></li>
+          <li ><a class="first" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+          <li><a class="first" routerLink="/search" routerLinkActive="active" ariaCurrentWhenActive="page">Search for Choir</a></li>
+          <li><a class="first" routerLink="/view-all" routerLinkActive="active" ariaCurrentWhenActive="page">View All Choirs</a></li>
+          <li *ngIf="!this.authService.isAuthenticated"><button id="login-button" (click)="displayLogin()">Login</button></li>
+          <li *ngIf="this.authService.isAuthenticated"><a class="first" routerLink="/add-new-choir" routerLinkActive="active" ariaCurrentWhenActive="page">Add A New Choir</a></li>
+          <li *ngIf="this.authService.isAuthenticated"><a class="first" routerLink="/manage-data" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Choir Data</a></li>
+          <li *ngIf="this.authService.isAuthenticated"><button id="logout-button" (click)="logout()">Logout</button></li>
         </ul>
       </nav>
+      <div *ngIf="showLogin">
+        <p>
+          <label>Username:</label>
+          <input type="text" placeholder="Username" [(ngModel)]="inputUsername">
+          <label>Password:</label>
+          <input type="password" placeholder="Password" [(ngModel)]="inputPassword">
+          <button id="form-login-button" (click)="login()">Login</button>
+        </p>
+      </div>
     <div id="content">
       <router-outlet />
     </div>
