@@ -1,0 +1,27 @@
+<div>
+  <h1>All Choirs</h1>
+      <p-table
+        [value]="savedData" 
+        [rows]="10"
+        [paginator]="true"
+      >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Contact Email</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.description }}</td>
+                <td>{{ data.contactEmail }}</td>
+                <td>{{ data.locationCity }}</td>
+                <td>{{ data.locationState }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,15 +1,21 @@
 <main>
-  <logo />
-  <navigation />
-  <div>
-    <h1>Welcome to Chorus Connector!</h1>
-    <div>
-      <p>
-        This is a minimal template for an Angular app. Make your music here!
-      </p>
+  <div id="container">
+    <div id="logo">
+      <logo />
+    </div>
+      <nav class="navigation">
+        <ul>
+          <li ><a class="first" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">View All Choirs</a></li>
+          <li><a class="first" routerLink="/search" routerLinkActive="active" ariaCurrentWhenActive="page">Search</a></li>
+          <li><a class="first" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+          <li><a routerLink="/manage-data" routerLinkActive="active" ariaCurrentWhenActive="page">Manage Choir Data</a></li>
+        </ul>
+      </nav>
+    <div id="content">
+      <router-outlet />
     </div>
   </div>
 </main>
 
 
-<router-outlet />
+
