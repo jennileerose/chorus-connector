@@ -57,3 +57,54 @@
 .first {
     border-right: 2px solid #fff;
 }
+
+label {
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+#login-button {
+    display: inline-flex;
+    list-style: none;
+    background-color: #777;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    padding-left: 0;
+    font-size: 1.15em;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+#logout-button {
+    display: inline-flex;
+    list-style: none;
+    background-color: #777;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    padding-left: 0;
+    font-size: 1.15em;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+#login-button:hover{
+    background-color:#fff;
+    color: #777;
+}
+
+#logout-button:hover{
+    background-color:#fff;
+    color: #777;
+}
+
+#form-login-button {
+    padding: 0.25em;
+    margin: 0.5em;
+}
+
+.error {
+    font-weight:700;
+    color: #aa0000;
+}
