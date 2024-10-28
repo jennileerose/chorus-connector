@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLinkActive, RouterOutlet, RouterLink } from '@angular/router';
+import { RouterLinkActive, RouterOutlet, RouterLink, Router } from '@angular/router';
 import { Logo } from './logo/logo.component'
 import { CommonModule } from '@angular/common';
 import * as AuthData from '../../auth.json'
@@ -22,22 +22,27 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent{
   title = 'chorus-connector';
+  // This block is all stuff for logging in
   showLogin = false;
   showError = false;
-  // This block is all stuff for logging in
   authorizationData: any = null;
-  constructor(public authService: AuthService){}
+  constructor(public authService: AuthService, private router: Router,){}
   inputUsername = '';
   inputPassword = '';
+  // Show the login username/password fields
   displayLogin() {
     this.showLogin = true;
   }
+  hideLogin() {
+    this.showLogin = false;
+  }
+  // log into the management admin account
   login() {
     this.authorizationData = AuthData.authorizedLogins[0];
     if(this.authorizationData.username === this.inputUsername && this.authorizationData.password === this.inputPassword) {
       this.authService.isAuthenticated = true;
-      this.inputUsername = '';
-      this.inputPassword = '';
+      // this.inputUsername = '';
+      // this.inputPassword = '';
       this.showLogin = false;
       this.showError = false;
     } else {
@@ -45,9 +50,11 @@ export class AppComponent{
       this.showError = true;
     }
   }
+  // logout from the managment admin account
   logout() {
     if(this.authService.isAuthenticated) {
       this.authService.isAuthenticated = false;
+      this.router.navigate(['/']);
     }
   }
 }

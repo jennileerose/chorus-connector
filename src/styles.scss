@@ -11,6 +11,7 @@ h1 {
 
 label {
     font-weight: bold;
+    font-size: 0.90em;
     padding: 0.5em;
 }
 
@@ -23,4 +24,14 @@ th {
 td {
     border: 1px solid #777 !important;
     padding: 0.25em;
+}
+
+.form-line {
+    display: flex;
+    flex: 2 0.25em;
+    margin-bottom: 0.5em;
+}
+
+.form-input {
+    order: 2;
 }

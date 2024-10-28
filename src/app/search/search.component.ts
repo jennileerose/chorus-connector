@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-import { DataService } from '../data.service';
+import * as ChoirData from '../../../data.json';
 
 @Component({
     selector: 'search',
@@ -12,7 +12,8 @@ import { DataService } from '../data.service';
     styleUrl: './search.component.scss'
   })
   export class SearchGroups implements OnInit {
-    constructor(public dataService: DataService){}
+
+    choirData = ChoirData.choruses
     @Input() reorganizedData: any[] = [];
     inputCity = '';
     inputState = '';
@@ -42,7 +43,7 @@ import { DataService } from '../data.service';
       }
     }
     ngOnInit() {
-      this.dataService.choirData.forEach((choir) => {
+      this.choirData.forEach((choir) => {
         this.reorganizedData.push({
           id: choir.id,
           name: choir.name,

@@ -2,25 +2,25 @@
     You need to log in before using this feature
 </div>
 <div *ngIf="this.authService.isAuthenticated" id="add-new">
-    <p>
-        <label>Name:</label>
-        <input type="text" placeholder="Choir Name" [(ngModel)]="inputName">
-    </p>
-    <p>
-        <label>Description:</label>
-        <input type="text" placeholder="Choir Description" [(ngModel)]="inputDescription">
-    </p>
-    <p>
-        <label>Contact Email:</label>
-        <input type="text" placeholder="Contact Email" [(ngModel)]="inputContactEmail">
-    </p>
-    <p>
-        <label>City:</label>
-        <input type="text" placeholder="City" [(ngModel)]="inputLocationCity">
-    </p>
-    <p>
-        <label>State:</label>
-        <select [(ngModel)]="inputLocationState">
+    <div class="form-line">
+        <div class=form-label><label>Name:</label></div>
+        <div class=form-input><input type="text" placeholder="Choir Name" [(ngModel)]="inputName"></div>
+    </div>
+    <div class="form-line">
+        <div class=form-label><label>Description:</label></div>
+        <div class=form-input><input type="text" placeholder="Choir Description" [(ngModel)]="inputDescription"></div>
+    </div>
+    <div class="form-line">
+        <div class=form-label><label>Contact Email:</label></div>
+        <div class=form-input><input type="text" placeholder="Contact Email" [(ngModel)]="inputContactEmail"></div>
+    </div>
+    <div class="form-line">
+        <div class=form-label><label>City:</label></div>
+        <div class=form-input><input type="text" placeholder="City" [(ngModel)]="inputLocationCity"></div>
+    </div>
+    <div class="form-line">
+        <div class=form-label><label>State:</label></div>
+        <div class=form-input><select [(ngModel)]="inputLocationState">
              <option value="AL">AL</option>
              <option value="AK">AK</option>
              <option value="AR">AR</option>
@@ -72,8 +72,9 @@
              <option value="WI">WI</option>
              <option value="WV">WV</option>
              <option value="WY">WY</option>
-         </select> 
-     </p>
+         </select>
+        </div>
+     </div>
     <p>
         <button (click)="addNewChoir()">Add Choir</button>
     </p>
