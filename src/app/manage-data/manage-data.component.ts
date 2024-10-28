@@ -112,7 +112,6 @@ export class ManageDataComponent implements OnInit{
   // deletes selected choir and prompts downloading the new data file
   deleteChoirInformation(id: string, name: string) {
     if(confirm('Are you sure you want to delete ' + name + ' ?')) {
-      console.log(id)
       this.reorganizedData.forEach((choir) => {
         if(choir.id !== id) {
           this.newChoirData.push({

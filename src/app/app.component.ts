@@ -41,8 +41,6 @@ export class AppComponent{
     this.authorizationData = AuthData.authorizedLogins[0];
     if(this.authorizationData.username === this.inputUsername && this.authorizationData.password === this.inputPassword) {
       this.authService.isAuthenticated = true;
-      // this.inputUsername = '';
-      // this.inputPassword = '';
       this.showLogin = false;
       this.showError = false;
     } else {

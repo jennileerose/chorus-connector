@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import * as choirData from '../../../data.json';
+import * as ChoirData from '../../../data.json';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-add-new-choir',
@@ -15,7 +14,7 @@ import { DataService } from '../data.service';
 })
 export class AddNewChoirComponent{
   // this checks if the user is logged in and routing to management when the new choir is added
-  constructor(public authService: AuthService, private router: Router, public dataService: DataService){}
+  constructor(public authService: AuthService, private router: Router){}
   randomString(length: number) {
     const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -24,8 +23,7 @@ export class AddNewChoirComponent{
     }
     return result;
   }
-
-  importedChoirData: any[] = choirData.choruses;
+  importedChoirData: any[] = ChoirData.choruses;
   newChoirData: any[] = []
   newID = this.randomString(24)
   idFlag = false;
@@ -49,7 +47,7 @@ export class AddNewChoirComponent{
         state: this.inputLocationState
       }
     })
-    this.dataService.choirData = this.newChoirData
+    this.importedChoirData = this.newChoirData
     const jsonData = JSON.stringify({choruses: this.newChoirData})
     const blob = new Blob([jsonData], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);

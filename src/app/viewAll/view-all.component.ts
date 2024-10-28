@@ -13,7 +13,6 @@ import * as ChoirData from '../../../data.json';
     choirData = ChoirData.choruses
     @Input() savedData: any[] = []
     ngOnInit() {
-      console.log(this.choirData)
       this.choirData.forEach((choir) => {
         this.savedData.push({
           id: choir.id,
