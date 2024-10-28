@@ -13,7 +13,8 @@ I created this with the most recent version of Angular. It was the best I could 
 
 The Page should look like this: 
 
-[home.png screenshot]
+[home.png screenshot](public/screenshots/home.png)
+
 
 From there you can explore the table, the search, and then login and explore the other functions. 
 
