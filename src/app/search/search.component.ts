@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import * as ChoirData from '../../../data.json';
+import { organizeDataForTables } from '../utils';
 
 @Component({
     selector: 'search',
@@ -20,6 +21,11 @@ import * as ChoirData from '../../../data.json';
     @Input() filteredData: any[] = [];
     results = false
     noResults = false
+
+    ngOnInit() {
+      this.reorganizedData = organizeDataForTables(this.choirData)
+    }
+
     search() {
       this.filteredData = []
       this.reorganizedData.forEach((choir) => {
@@ -41,17 +47,5 @@ import * as ChoirData from '../../../data.json';
         this.results = true
         this.noResults = false
       }
-    }
-    ngOnInit() {
-      this.choirData.forEach((choir) => {
-        this.reorganizedData.push({
-          id: choir.id,
-          name: choir.name,
-          description: choir.description,
-          contactEmail: choir.contactEmail,
-          locationCity: choir.location.city,
-          locationState: choir.location.state
-        })
-      })
     }
   }

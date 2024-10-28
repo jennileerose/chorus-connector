@@ -8,6 +8,7 @@ import { heroPencilSquareSolid, heroTrashSolid } from '@ng-icons/heroicons/solid
 import * as ChoirData from '../../../data.json';
 import { Router } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
+import { organizeDataForTables } from '../utils';
 
 @Component({
   selector: 'app-manage-data',
@@ -34,16 +35,7 @@ export class ManageDataComponent implements OnInit{
   @Input() reorganizedData: any[] = [];
   // On Init, re-orgnaize the choir data for easier access in the table
   ngOnInit() {
-    this.choirData.forEach((choir) => {
-      this.reorganizedData.push({
-        id: choir.id,
-        name: choir.name,
-        description: choir.description,
-        contactEmail: choir.contactEmail,
-        locationCity: choir.location.city,
-        locationState: choir.location.state
-      })
-    })
+    this.reorganizedData = organizeDataForTables(this.choirData)
   }
   // hides the data table and shows the edit form
   editChoirInformationModal(id: string) {

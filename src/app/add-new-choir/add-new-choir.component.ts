@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import * as ChoirData from '../../../data.json';
 import { Router } from '@angular/router';
+import { randomString } from '../utils';
 
 @Component({
   selector: 'app-add-new-choir',
@@ -15,17 +16,10 @@ import { Router } from '@angular/router';
 export class AddNewChoirComponent{
   // this checks if the user is logged in and routing to management when the new choir is added
   constructor(public authService: AuthService, private router: Router){}
-  randomString(length: number) {
-    const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for ( var i = 0; i < length; i++ ) {
-        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-    }
-    return result;
-  }
+  
   importedChoirData: any[] = ChoirData.choruses;
   newChoirData: any[] = []
-  newID = this.randomString(24)
+  newID = randomString(24)
   idFlag = false;
   inputName = '';
   inputDescription = '';

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive, RouterOutlet, RouterLink, Router } from '@angular/router';
 import { Logo } from './logo/logo.component'
 import { CommonModule } from '@angular/common';
 import * as AuthData from '../../auth.json'
 import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
+import * as ChoirData from '../../data.json';
+
 
 @Component({
   selector: 'app-root',
@@ -20,8 +22,12 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
   title = 'chorus-connector';
+  ngOnInit() {
+    // preloading data in local data due to lack of DB
+    localStorage.setItem('choirData', JSON.stringify(ChoirData))
+  }
   // This block is all stuff for logging in
   showLogin = false;
   showError = false;
